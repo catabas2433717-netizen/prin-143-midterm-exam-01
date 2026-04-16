@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OrderInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="PRIN143-Midterm-Catabas.xsd">
+
+  <OrderId>1001</OrderId>
+  <OrderDateTime>2026-04-16T15:00:00</OrderDateTime>
+
+  <OrderItems>
+    <OrderItem>
+      <ProductId>P001</ProductId>
+      <Name>Wireless Mouse</Name>
+      <Quantity>2</Quantity>
+      <UnitPrice currency="PHP">500.00</UnitPrice>
+      <SalePrice currency="PHP" Sequence="1">450.00</SalePrice>
+    </OrderItem>
+  </OrderItems>
+
+  <Shipping>
+    <Carrier>SPX</Carrier>
+    <Fee currency="PHP">100.00</Fee>
+  </Shipping>
+
+  <Promocode>SALE10</Promocode>
+
+  <TotalAmount currency="PHP">1000.00</TotalAmount>
+
+</OrderInfo>

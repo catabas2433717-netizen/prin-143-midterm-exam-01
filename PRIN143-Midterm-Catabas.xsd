@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="OrderInfo">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="OrderId" type="xs:nonNegativeInteger"/>
+        <xs:element name="OrderDateTime" type="xs:dateTime"/>
+
+        <xs:element name="OrderItems">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OrderItem" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+
+                    <xs:element name="ProductId" type="xs:string"/>
+
+                    <xs:element name="Name">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="50"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+
+                    <xs:element name="Quantity" type="xs:nonNegativeInteger"/>
+
+                    <xs:element name="UnitPrice">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:decimal">
+                            <xs:attribute name="currency" use="required">
+                              <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                  <xs:enumeration value="PHP"/>
+                                </xs:restriction>
+                              </xs:simpleType>
+                            </xs:attribute>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+
+                    <xs:element name="SalePrice">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:decimal">
+                            <xs:attribute name="currency" use="required">
+                              <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                  <xs:enumeration value="PHP"/>
+                                </xs:restriction>
+                              </xs:simpleType>
+                            </xs:attribute>
+                            <xs:attribute name="Sequence" type="xs:nonNegativeInteger" use="required"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="Shipping">
+          <xs:complexType>
+            <xs:all>
+
+              <xs:element name="Carrier">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="SPX"/>
+                    <xs:enumeration value="FlashEx"/>
+                    <xs:enumeration value="NinjaVan"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+
+              <xs:element name="Fee">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:decimal">
+                      <xs:attribute name="currency" use="required">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="PHP"/>
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="Promocode" minOccurs="0" maxOccurs="3">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="10"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="TotalAmount">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:decimal">
+                <xs:attribute name="currency" use="required">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="PHP"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
